@@ -1,0 +1,7 @@
+#group-format:disabled,
+#input-male-count:disabled,
+#input-female-count:disabled,
+
+#btn-save-GF:disabled{
+    opacity: .5;
+}

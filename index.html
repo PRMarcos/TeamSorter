@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./script.js" defer></script>
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="./icons/favicon-32.png" type="image/x-icon">
+        <title>Team Sorter</title>
+    </head>
+
+    <body class="max-w-md mx-auto p-2 bg-gray-500">
+        <header class="bg-blue-700 flex items-center justify-center p-3">
+            <img src="./icons/favicon-96.png" alt="logo" width="60px">
+            <h1 class="ml-3 text-xl font-bold text-white">Team sorter</h1>
+        </header>
+
+        <main>
+            <div class="mb-2 bg-white flex flex-col border-2 p-2 overflow-hidden">
+                <label class="" for="input-name">Name:</label>
+                <input class="border-b-2 mt-2 outline-none" id="input-name" type="text" placeholder="Your Name" />
+
+                <div class="pt-1 mt-3 mb-2 ">
+                    <p class="mb-2">Select Gender</p>
+
+                    <div class="mt-1 inline-flex items-center">
+                        <input class="w-6 h-6" checked name="radio-gender" value="male" id="gender-male" type="radio" />
+                        <label class="ml-2 mr-4" for="gender-male">Male</label>
+                    </div>
+
+                    <div class="inline-flex items-center">
+                        <input class="w-6 h-6" name="radio-gender" value="female" id="gender-female" type="radio" />
+                        <label class="ml-2 mr-4" for="gender-female">Female</label>
+                    </div>
+
+                </div>
+                <button class="ml-auto mr-2 w-min text-white font-bold bg-blue-700 hover:bg-blue-800 py-2 px-4 rounded"
+                    onclick="handleSaveParticipant()">Save</button>
+            </div>
+
+            <div class="mb-2 bg-white flex flex-col border-2 p-2 overflow-hidden">
+
+
+                <div class="flex justify-between items-center">
+                    <h1 class="font-bold">Participants</h1>
+                    <button id="btn-ParticipantsList-toggler" onclick="togglePartiipantsList()"
+                        class="expand px-3 text-white bg-blue-700 rounded ">▲</button>
+                </div>
+
+
+                <div id="participants-list" class="mt-3 flex flex-col mb-2 gap-y-1">
+
+                </div>
+
+            </div>
+
+            <div class="mb-2 bg-white border-2 p-2 overflow-hidden">
+
+                <div class="flex justify-between items-center">
+                    <h1 class="font-bold">Configuration</h1>
+                    <button id="btn-configuration-toggler" onclick="toggleConfiguration()"
+                        class="expand px-3 text-white bg-blue-700 rounded ">▼</button>
+                </div>
+
+                <div id="section-configuration" class="mt-3 hidden">
+
+                    <div class="grid grid-cols-2 gap-y-1">
+                        <label for="input-Group-Size" class=" mr-3 font-bold">Ggroup size</label>
+                        <input onchange="handlleGroupSizeChange()" class="border-2 text-center w-auto outline-none"
+                            id="input-Group-Size" type="number" min="0" value="0" />
+
+
+                        <h1 class="mt-4 col-span-2 font-bold mb-3 border-t-2 pt-2">Repeat Participants to compleat:</h1>
+
+                        <div class="inline-flex items-center mb-2">
+                            <input onchange="handlleRepeatFemaleParticipantChange()" class="w-6 h-6 ml-3" type="checkbox"
+                                name="repeat-participant-female" id="repeat-participant-female">
+                            <label class="ml-3" for="repeat-participant-female">Female</label>
+                        </div>
+                        <div class="inline-flex items-center mb-2">
+                            <input onchange="handlleRepeatMaleParticipantChange()" class="w-6 h-6 ml-3" type="checkbox"
+                                name="repeat-participant-male" id="repeat-participant-male">
+                            <label class="ml-3" for="repeat-participant-male">Male</label>
+                        </div>
+
+
+                        <div class="inline-flex items-center col-span-2 p-1 mt-2  border-b-2 bg-gray-500">
+                            <label for="group-format" class="font-bold">Group Format</label>
+                            <input onchange="toggleGroupformat()" class="w-6 h-6 ml-3" type="checkbox" name="group-format"
+                                id="group-format">
+                        </div>
+
+                        <label for="input-male-count" class="font-bold  ">Male count</label>
+                        <input onchange="handleGroupFormatMaleCountChange()" disabled
+                            class="border-2 text-center outline-none" id="input-male-count" type="number" min="0"
+                            value="0" />
+
+                        <label for="input-female-count" class="font-bold">Female Count</label>
+                        <input disabled readonly class="border-2 text-center outline-none" id="input-female-count"
+                            type="number" min="0" value="0" />
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="mb-2 bg-white flex flex-col border-2 p-2 overflow-hidden">
+
+                <button class="text-white font-bold bg-green-700 hover:bg-green-800 py-2 px-4 rounded"
+                    onclick="handleSortGroups()">Sort Groups</button>
+
+                <div id="group-list" class="mt-3">
+
+                </div>
+            </div>
+        </main>
+
+        <footer class="p-3 bg-blue-700 text-center text-white">
+            <span>💻 by <a target="_blank" href="https://github.com/prmarcos" > Marcos </a></span>
+        </footer>
+    </body>
+
+</html>
